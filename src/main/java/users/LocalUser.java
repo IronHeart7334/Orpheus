@@ -3,7 +3,6 @@ package users;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import javax.swing.JOptionPane;
-import net.OrpheusServer;
 
 /**
  *

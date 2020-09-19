@@ -1,6 +1,5 @@
 package gui.pages.worldPlay;
 
-import gui.components.Chat;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -16,7 +15,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 import gui.pages.Page;
 import gui.pages.worldSelect.WSMain;
-import world.HostWorld;
 import world.RemoteProxyWorld;
 
 /**
@@ -32,7 +30,6 @@ import world.RemoteProxyWorld;
 public class WorldPage extends Page{
     private final JPanel canvasArea;
     private WorldCanvas canvas;
-    private final Chat chat;
     
     public WorldPage(){
         super();
@@ -55,12 +52,6 @@ public class WorldPage extends Page{
         JPanel otherArea = new JPanel();
         otherArea.setLayout(new GridBagLayout());
         GridBagConstraints c2 = new GridBagConstraints();
-        chat = new Chat();
-        c2.fill = GridBagConstraints.VERTICAL;
-        c2.anchor = GridBagConstraints.FIRST_LINE_START;
-        c2.weightx = 1.0;
-        c2.weighty = 1.0;
-        otherArea.add(chat, c2.clone());
         
         JTextArea controls = new JTextArea(
             "#CONTROLS#\n"+
@@ -95,17 +86,8 @@ public class WorldPage extends Page{
                 w.requestFocusInWindow();
             }
         });
-        if(w.getWorldShell() instanceof RemoteProxyWorld || w.getWorldShell() instanceof HostWorld){
-            try {
-                chat.openChatServer();
-            } catch (IOException ex) {
-                chat.logLocal("Failed to start chat server");
-                ex.printStackTrace();
-            }
-        }
+        
         SwingUtilities.invokeLater(()->w.requestFocusInWindow());
-        chat.logLocal("Currently rendering World " + w.getWorldShell().hashCode());
-        chat.logLocal("Rendered on WorldCanvas " + w.hashCode());
         revalidate();
         repaint();
         return this;

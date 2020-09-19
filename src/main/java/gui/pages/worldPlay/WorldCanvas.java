@@ -20,7 +20,7 @@ import java.io.ObjectOutputStream;
 import users.LocalUser;
 import util.SerialUtil;
 import gui.pages.Canvas;
-import world.HostWorld;
+import world.SoloWorld;
 import world.WorldContent;
 
 /**
@@ -157,7 +157,7 @@ public class WorldCanvas extends Canvas{
         
         player.applyBuild(Settings.getDataSet().getDefaultBuild());
         
-        HostWorld world = new HostWorld(WorldContent.createDefaultBattle());
+        SoloWorld world = new SoloWorld(WorldContent.createDefaultBattle());
         Team t1 = new Team("Test", Color.BLUE);
         Team t2 = Team.constructRandomTeam("Rando", Color.yellow, 1, 1);
         t1.addMember(player);

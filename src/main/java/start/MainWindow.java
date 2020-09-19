@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
-import net.OrpheusServer;
 import util.CombatLog;
 import gui.pages.Page;
 import gui.pages.PageSwitchListener;
@@ -48,14 +47,6 @@ public class MainWindow extends JFrame{
             @Override
             public void windowClosing(WindowEvent e) {
                 //CombatLog.displayLog();
-                try{
-                    OrpheusServer.getInstance().shutDown();
-                } catch(NullPointerException ex){
-                    // server wasn't started in the first place
-                    System.out.println("Got this error, likely because the server wasn't started, which isn't a problem: " + ex.getMessage());
-                } catch(Exception ex){
-                    ex.printStackTrace();
-                }
             }
         });
         

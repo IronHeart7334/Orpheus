@@ -17,8 +17,6 @@ public class WSMain extends Page{
         setLayout(new GridLayout(1, 3));
         
         add(soloButton());
-        add(newMultiButton());
-        add(joinMultiButton());
         Style.applyStyling(this);
     }
     
@@ -29,23 +27,5 @@ public class WSMain extends Page{
             getHost().switchToPage(new WSSolo());
         });
         return solo;
-    }
-    
-    private JButton newMultiButton(){
-        JButton newMulti = new JButton("Host a multiplayer game");
-        Style.applyStyling(newMulti);
-        newMulti.addActionListener((e)->{
-            getHost().switchToPage(new WSNewMulti());
-        });
-        return newMulti;
-    }
-    
-    private JButton joinMultiButton(){
-        JButton joinMulti = new JButton("Join a multiplayer game");
-        Style.applyStyling(joinMulti);
-        joinMulti.addActionListener((e)->{
-            getHost().switchToPage(new WSJoin());
-        });
-        return joinMulti;
     }
 }
